@@ -9,28 +9,35 @@ export default async function Home() {
   
   
   return (
-    <main className="h-full flex justify-center items-center bg-blue-500/30">
-      <Image src="/assets/main.jpg" alt='' fill objectFit="cover" objectPosition="center" className="absolute z-[-1]" placeholder="blur" blurDataURL="/assets/main.jpg"/>
+    <main className="h-full bg-blue-500/30 overflow-hidden">
+      <Image src="/assets/main.jpg" alt='' fill className="absolute z-[-1] object-cover object-center" placeholder="blur" blurDataURL="/assets/main.jpg"/>
 
       
       {user && (
-        <span className="shadow-md rounded-3xl">
-          <article className="bg-white/5 rounded-3xl text-slate-800 px-10 py-16 flex flex-col justify-center items-center max-w-xl backdrop-blur-md shadow-inner shadow-white/50">
-            <Image src={user.avatar_url} alt={user.name} width={180} height={180} objectFit="cover" className="rounded-full"/>
-            <h1 className="whitespace-nowrap font-bold text-4xl mt-12 text-slate-100">{user?.name}</h1>
-            <span className="text-sm text-slate-100/50 text-xl">Software Developer</span>
+        
+        <div className="h-full flex justify-center items-center overflow-auto p-2">
+          <span className="shadow-md rounded-3xl z-10">
+            <article className="bg-white/5 rounded-3xl text-slate-800 px-10 py-16 flex flex-col justify-center items-center max-w-xl backdrop-blur-md shadow-inner shadow-white/50">
+              <Image src={user.avatar_url} alt={user.name} width={180} height={180} objectFit="cover" className="rounded-full"/>
+              <h1 className="whitespace-nowrap font-bold text-4xl mt-12 text-slate-100">{user?.name}</h1>
+              <span className="text-sm text-slate-100/50 text-xl">Software Developer</span>
 
-            <p className="text-center max-w-sm text-slate-100 leading-tight mt-12">{user.bio}</p>
+              <p className="text-center max-w-sm text-slate-100 leading-tight mt-12">{user.bio}</p>
 
-            <div className="flex gap-4 mt-10">
-              <Button as="a" target="_blank" href="https://github.com/felipeolliveira" icon={Icons.Github}>Github</Button>
-              <Button as="a" target="_blank" href="https://linkedin.com/in/felipeolliveira" icon={Icons.Linkedin}>Linkedin</Button>
-            </div>
-          </article>
-        </span>
+              <div className="flex gap-4 mt-10">
+                <Button as="a" target="_blank" rel="noopener noreferrer" href="https://github.com/felipeolliveira" icon={Icons.Github}>Github</Button>
+                <Button as="a" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/felipeolliveira" icon={Icons.Linkedin}>Linkedin</Button>
+              </div>
+            </article>
+          </span>
+        </div>
       )}
 
       {!user && ('Carregando...')}
+
+      <span className="text-xs absolute z-0 bottom-2 left-1/2 -translate-x-1/2">
+        inspired by <a href="https://www.figma.com/community/file/1130839780230933874" target="_blank" className="text-slate-200 underline" rel="noopener noreferrer" >Ajinkya</a> ❤️
+      </span>
     </main>
   )
 }
