@@ -10,7 +10,7 @@ export default async function Home() {
   
   return (
     <main className="h-full flex justify-center items-center bg-blue-500/30">
-      <Image src="/assets/main.jpg" alt='' fill objectFit="cover" objectPosition="center" className="absolute z-[-1]"/>
+      <Image src="/assets/main.jpg" alt='' fill objectFit="cover" objectPosition="center" className="absolute z-[-1]" placeholder="blur" blurDataURL="/assets/main.jpg"/>
 
       
       {user && (
